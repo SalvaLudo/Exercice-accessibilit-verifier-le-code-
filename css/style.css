@@ -1,0 +1,107 @@
+/* ===== Terre & Bois – feuille de style ===== */
+
+* { box-sizing: border-box; }
+
+*:focus { outline: none; }
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: #333;
+}
+
+a { color: #6b4f3a; text-decoration: none; }
+
+/* ----- En-tête ----- */
+.header { background: #f4efe8; padding: 0 24px; }
+.header-top { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; gap: 16px; }
+.search { display: flex; }
+.search input { width: 320px; padding: 8px; border: 1px solid #e0d8cf; }
+.search input::placeholder { color: #c9c2ba; }
+.search button { background: #fff; border: 1px solid #e0d8cf; cursor: pointer; }
+.user-links a { margin-left: 16px; }
+.user-links #compteur { background: #d9362b; color: #fff; border-radius: 10px; padding: 0 6px; font-size: 11px; }
+
+.burger { display: none; font-size: 28px; cursor: pointer; }
+.menu { display: flex; gap: 24px; padding: 8px 0 12px; align-items: baseline; }
+
+/* Sous-menus */
+.menu-deroulant { position: relative; }
+.sous-menu { display: none; position: absolute; top: 100%; left: -12px; z-index: 20; min-width: 200px; background: #fff; border: 1px solid #e0d8cf; box-shadow: 0 6px 16px rgba(0,0,0,.12); padding: 8px 0; }
+.sous-menu a { display: block; padding: 8px 16px; color: #6b4f3a; }
+.sous-menu a:hover { background: #f4efe8; }
+.menu-deroulant:hover .sous-menu,
+.menu-deroulant.ouvert .sous-menu { display: block; }
+.menu-deroulant a:focus,
+.sous-menu a:focus { outline: none; }
+.menu-item { cursor: pointer; color: #6b4f3a; }
+.menu-item.active { color: #c9a27e; }
+
+/* ----- Bandeau défilant ----- */
+.bandeau-defilant { overflow: hidden; background: #3b2f26; color: #fff; white-space: nowrap; }
+.bandeau-defilant p { display: inline-block; margin: 6px 0; animation: defile 12s linear infinite; }
+@keyframes defile { from { transform: translateX(100vw); } to { transform: translateX(-100%); } }
+
+/* ----- Contenu ----- */
+.content { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+.hero { position: relative; height: 360px; overflow: hidden; margin-top: 24px; }
+.hero img { width: 100%; height: 100%; object-fit: cover; }
+.btn-hero { position: absolute; right: 40px; bottom: 30px; background: #fff; color: #c9a27e; padding: 12px 24px; }
+
+.section { padding: 32px 0; }
+.section-title, .section h1, .section h3 { font-family: Georgia, serif; font-size: 26px; color: #3b2f26; margin: 0 0 20px; font-weight: bold; }
+
+.grid { display: grid; grid-template-columns: repeat(4, 250px); gap: 24px; }
+
+.categorie { border: 1px solid #eee; border-radius: 8px; overflow: hidden; }
+.categorie img { width: 100%; display: block; }
+.categorie h5 { font-size: 18px; margin: 12px; }
+
+.produit { position: relative; border: 1px solid #eee; border-radius: 8px; padding: 16px; }
+.produit img { width: 100%; }
+.produit .badge { position: absolute; width: 56px; top: 8px; left: 8px; }
+.produit h4 { font-size: 17px; margin: 12px 0 4px; }
+.prix { font-size: 18px; color: #999; }
+.ancien-prix { text-decoration: line-through; font-size: 14px; margin-right: 6px; }
+.pastille { display: inline-block; width: 12px; height: 12px; border-radius: 50%; }
+.pastille.verte { background: #3cb44b; }
+.pastille.orange { background: #f5a623; }
+
+.btn { display: inline-block; background: #d8b48f; color: #fff; padding: 10px 20px; border-radius: 4px; cursor: pointer; margin: 8px 0; }
+
+.toast { position: fixed; bottom: 20px; right: 20px; background: #3cb44b; color: #fff; padding: 12px 20px; border-radius: 4px; display: none; }
+
+.engagements table { width: 100%; }
+.engagements td { padding: 8px; vertical-align: middle; }
+
+.newsletter input { padding: 10px; width: 300px; border: 1px solid #ddd; }
+.newsletter input.erreur { border: 2px solid red; }
+.obligatoire { color: red; }
+
+/* ----- Pied de page ----- */
+.footer { display: flex; justify-content: space-around; background: #3b2f26; color: #7d6f63; padding: 32px 24px; font-size: 11px; }
+.footer a { color: #8a7b6e; }
+.footer-title { font-weight: bold; font-size: 14px; margin-bottom: 8px; color: #b3a393; }
+
+/* ----- Mobile ----- */
+@media (max-width: 640px) {
+  .burger { display: block; }
+  .menu { display: none; flex-direction: column; }
+  .menu.open { display: flex; }
+  .sous-menu { position: static; box-shadow: none; border: 0; }
+}
+
+/* ----- Atelier ----- */
+.atelier-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+.atelier-grid img { width: 100%; border-radius: 8px; }
+.atelier iframe { border: 0; border-radius: 8px; }
+@media (max-width: 640px) { .atelier-grid { grid-template-columns: 1fr; } }
+
+/* ----- Tableau livraison ----- */
+.tarifs { width: 900px; border-collapse: collapse; }
+.tarifs td { border: 1px solid #e0d8cf; padding: 10px 14px; text-align: center; }
+.tarifs tr:first-child td, .tarifs tr:nth-child(2) td { background: #f4efe8; }
+.tarifs td:first-child { text-align: left; }
+.tarifs .gratuit { color: #3cb44b; font-weight: bold; }
